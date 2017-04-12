@@ -32,3 +32,8 @@ body {
  h1,h4 {
    color: lightgrey;
  }
+
+ h1 {
+   letter-spacing: 3.2px;
+   font-size: 40px;
+ }
