@@ -36,6 +36,10 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
-  # Raises error for missing translations
-  # config.action_view.raise_on_missing_translations = true
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
 end
+
+
+ENV['FACEBOOK_KEY'] = '768365176661246'
+ENV['FACEBOOK_SECRET'] = '7279adbe2d29e27c67a67eb4ca07e4b0'
