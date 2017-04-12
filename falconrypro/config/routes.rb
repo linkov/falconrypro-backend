@@ -19,4 +19,6 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'pages/home' => 'high_voltage/pages#show', id: 'home'
+
 end

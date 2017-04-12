@@ -9,6 +9,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.7.1'
 gem 'mysql2', '~> 0.3.18'
 
+# Frontend
+gem 'high_voltage', '~> 3.0.0'
 
 # Admin
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
