@@ -1,5 +1,6 @@
 ActiveAdmin.register User do
   permit_params :email, :password, :password_confirmation
+  menu parent: 'User generated'
 
   index do
     selectable_column

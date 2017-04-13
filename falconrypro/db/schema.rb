@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170412103119) do
+ActiveRecord::Schema.define(version: 20170413224600) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -68,6 +68,12 @@ ActiveRecord::Schema.define(version: 20170412103119) do
 
   add_index "birds", ["bird_type_id"], name: "index_birds_on_bird_type_id", using: :btree
   add_index "birds", ["user_id"], name: "index_birds_on_user_id", using: :btree
+
+  create_table "quarry_types", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",               limit: 255,   default: "email", null: false
