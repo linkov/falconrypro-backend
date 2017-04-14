@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170414190646) do
+ActiveRecord::Schema.define(version: 20170414212441) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -48,10 +48,11 @@ ActiveRecord::Schema.define(version: 20170414190646) do
 
   create_table "bird_types", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "latin",      limit: 255
     t.integer  "group_id",   limit: 4
+    t.boolean  "popular",                default: false
   end
 
   add_index "bird_types", ["group_id"], name: "index_bird_types_on_group_id", using: :btree
