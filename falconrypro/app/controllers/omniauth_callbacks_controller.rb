@@ -274,7 +274,7 @@ require 'koala'
         #     :query => user_data
         # )
 
-        render json:{url:DeviseTokenAuth::Url.generate('callback', data.merge(blank: true)), client:@client_id,token:@token,expiry:@resource.tokens[@client_id][:expiry].to_s,uid:user_data['uid']}
+        render json:{url:DeviseTokenAuth::Url.generate('callback', data.merge(blank: true)), client:@client_id,"access-token":@token,expiry:@resource.tokens[@client_id][:expiry].to_s,uid:user_data['uid']}
       else
 
         # there SHOULD always be an auth_origin_url, but if someone does something silly
