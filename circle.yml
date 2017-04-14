@@ -16,7 +16,7 @@ deployment:
   production:
     branch: master
     commands:
-      - ./deploy_production.sh:
+      - ./falconrypro/deploy_production.sh:
          timeout: 2200
 
 dependencies:
