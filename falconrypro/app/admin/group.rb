@@ -1,11 +1,9 @@
-ActiveAdmin.register BirdType do
-  permit_params :name, :latin, :group_id
+ActiveAdmin.register Group do
+  permit_params :name
   before_filter :skip_sidebar!, :only => :index
   index  do
   selectable_column
   column :name
-  column :latin
-  column :group
   actions
   end
 end

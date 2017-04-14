@@ -14,7 +14,7 @@ class BirdimageUploader < CarrierWave::Uploader::Base
   process :resize_to_limit => [600, 600]
 
 
-  version :thumb, from_version: :preview do
+  version :thumb do
     process :resize_to_fit => [300, 300]
   end
 

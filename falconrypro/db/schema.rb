@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170413224600) do
+ActiveRecord::Schema.define(version: 20170414190646) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -50,7 +50,11 @@ ActiveRecord::Schema.define(version: 20170413224600) do
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "latin",      limit: 255
+    t.integer  "group_id",   limit: 4
   end
+
+  add_index "bird_types", ["group_id"], name: "index_bird_types_on_group_id", using: :btree
 
   create_table "birds", force: :cascade do |t|
     t.integer  "bird_type_id",   limit: 4
@@ -68,6 +72,12 @@ ActiveRecord::Schema.define(version: 20170413224600) do
 
   add_index "birds", ["bird_type_id"], name: "index_birds_on_bird_type_id", using: :btree
   add_index "birds", ["user_id"], name: "index_birds_on_user_id", using: :btree
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "quarry_types", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -105,6 +115,7 @@ ActiveRecord::Schema.define(version: 20170413224600) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
 
+  add_foreign_key "bird_types", "groups"
   add_foreign_key "birds", "bird_types"
   add_foreign_key "birds", "users"
 end
