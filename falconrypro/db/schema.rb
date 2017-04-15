@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170415192417) do
+ActiveRecord::Schema.define(version: 20170415221517) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -74,6 +74,21 @@ ActiveRecord::Schema.define(version: 20170415192417) do
   add_index "birds", ["bird_type_id"], name: "index_birds_on_bird_type_id", using: :btree
   add_index "birds", ["user_id"], name: "index_birds_on_user_id", using: :btree
 
+  create_table "food_groups", force: :cascade do |t|
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "name",       limit: 255
+  end
+
+  create_table "foods", force: :cascade do |t|
+    t.string   "name",          limit: 255
+    t.integer  "food_group_id", limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "foods", ["food_group_id"], name: "index_foods_on_food_group_id", using: :btree
+
   create_table "groups", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
@@ -128,5 +143,6 @@ ActiveRecord::Schema.define(version: 20170415192417) do
   add_foreign_key "bird_types", "groups"
   add_foreign_key "birds", "bird_types"
   add_foreign_key "birds", "users"
+  add_foreign_key "foods", "food_groups"
   add_foreign_key "quarry_types", "quarry_groups"
 end
