@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170428133513) do
+ActiveRecord::Schema.define(version: 20170429180829) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -58,8 +58,12 @@ ActiveRecord::Schema.define(version: 20170428133513) do
 
   add_index "bird_types", ["group_id"], name: "index_bird_types_on_group_id", using: :btree
 
+  create_table "bird_types_birds", id: false, force: :cascade do |t|
+    t.integer "bird_type_id", limit: 4, null: false
+    t.integer "bird_id",      limit: 4, null: false
+  end
+
   create_table "birds", force: :cascade do |t|
-    t.integer  "bird_type_id",   limit: 4
     t.integer  "user_id",        limit: 4
     t.boolean  "sex"
     t.string   "code",           limit: 255
@@ -72,7 +76,6 @@ ActiveRecord::Schema.define(version: 20170428133513) do
     t.string   "name",           limit: 255
   end
 
-  add_index "birds", ["bird_type_id"], name: "index_birds_on_bird_type_id", using: :btree
   add_index "birds", ["user_id"], name: "index_birds_on_user_id", using: :btree
 
   create_table "food_groups", force: :cascade do |t|
@@ -142,7 +145,6 @@ ActiveRecord::Schema.define(version: 20170428133513) do
   add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
 
   add_foreign_key "bird_types", "groups"
-  add_foreign_key "birds", "bird_types"
   add_foreign_key "birds", "users"
   add_foreign_key "foods", "food_groups"
   add_foreign_key "quarry_types", "quarry_groups"

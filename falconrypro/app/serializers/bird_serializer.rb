@@ -1,6 +1,6 @@
 class BirdSerializer < ActiveModel::Serializer
   attributes :id, :name, :thumb, :pic, :fat_weight, :hunting_weight, :code, :birthday, :type_name, :sex
-  belongs_to :bird_type
+  has_many :bird_types
 
   def id
     object.id.to_s
@@ -10,7 +10,7 @@ class BirdSerializer < ActiveModel::Serializer
   end
 
   def type_name
-    object.bird_type.name
+    object.bird_types.pluck(:name)
   end
 
   def pic
