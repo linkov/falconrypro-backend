@@ -1,6 +1,11 @@
 class DiaryItemSerializer < ActiveModel::Serializer
-  attributes :id, :weight, :diet_offered, :diet_eaten, :note, :food, :food_name, :offered, :eaten, :weight_s, :created_at, :created
+  attributes :id, :weight, :diet_offered, :diet_eaten, :note, :food_name, :offered, :eaten, :weight_s, :created_at, :created
+  has_one :food
 
+  def id
+    object.id.to_s
+  end
+  
   def food_name
     object.food.name
   end
