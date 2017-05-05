@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170504100442) do
+ActiveRecord::Schema.define(version: 20170505095409) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -78,21 +78,38 @@ ActiveRecord::Schema.define(version: 20170504100442) do
 
   add_index "birds", ["user_id"], name: "index_birds_on_user_id", using: :btree
 
+  create_table "diary_foods", force: :cascade do |t|
+    t.integer  "food_id",       limit: 4
+    t.integer  "eaten",         limit: 4
+    t.time     "time"
+    t.integer  "diary_item_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "diary_foods", ["diary_item_id"], name: "index_diary_foods_on_diary_item_id", using: :btree
+  add_index "diary_foods", ["food_id"], name: "index_diary_foods_on_food_id", using: :btree
+
   create_table "diary_items", force: :cascade do |t|
-    t.integer  "weight",       limit: 4
-    t.integer  "diet_offered", limit: 4
-    t.integer  "diet_eaten",   limit: 4
-    t.integer  "food_id",      limit: 4
-    t.text     "note",         limit: 65535
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.integer  "bird_id",      limit: 4
-    t.integer  "season_id",    limit: 4
+    t.text     "note",       limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "bird_id",    limit: 4
+    t.integer  "season_id",  limit: 4
   end
 
   add_index "diary_items", ["bird_id"], name: "index_diary_items_on_bird_id", using: :btree
-  add_index "diary_items", ["food_id"], name: "index_diary_items_on_food_id", using: :btree
   add_index "diary_items", ["season_id"], name: "index_diary_items_on_season_id", using: :btree
+
+  create_table "diary_weights", force: :cascade do |t|
+    t.integer  "weight",        limit: 4
+    t.time     "time"
+    t.integer  "diary_item_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "diary_weights", ["diary_item_id"], name: "index_diary_weights_on_diary_item_id", using: :btree
 
   create_table "food_groups", force: :cascade do |t|
     t.datetime "created_at",             null: false
@@ -173,9 +190,11 @@ ActiveRecord::Schema.define(version: 20170504100442) do
 
   add_foreign_key "bird_types", "groups"
   add_foreign_key "birds", "users"
+  add_foreign_key "diary_foods", "diary_items"
+  add_foreign_key "diary_foods", "foods"
   add_foreign_key "diary_items", "birds"
-  add_foreign_key "diary_items", "foods"
   add_foreign_key "diary_items", "seasons"
+  add_foreign_key "diary_weights", "diary_items"
   add_foreign_key "foods", "food_groups"
   add_foreign_key "quarry_types", "quarry_groups"
   add_foreign_key "seasons", "birds"
