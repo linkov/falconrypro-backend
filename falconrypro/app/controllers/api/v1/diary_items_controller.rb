@@ -1,8 +1,8 @@
 class Api::V1::DiaryItemsController < Api::ApiController
   def index
     Rails.logger.info params
-    bird = Bird.where(:id => params[:bird_id]).first
-    render json: DiaryItem.where(:bird_id => bird.id ).order(created_at: :desc)
+    season = Season.where(:id => params[:season_id]).first
+    render json: DiaryItem.where(:season_id => season.id ).order(created_at: :desc)
   end
 
   def create

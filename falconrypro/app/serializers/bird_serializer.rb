@@ -2,6 +2,11 @@ class BirdSerializer < ActiveModel::Serializer
   attributes :id, :name, :thumb, :pic, :fat_weight, :hunting_weight, :code, :birthday, :type_name, :sex
   has_many :bird_types
   has_many :diary_items
+  has_many :seasons
+
+  def owner
+    object.user.id.to_s
+  end
 
   def id
     object.id.to_s
