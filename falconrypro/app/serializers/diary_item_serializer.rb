@@ -2,6 +2,8 @@ class DiaryItemSerializer < ActiveModel::Serializer
   attributes :id, :note, :created_at, :created, :bird
   has_many :diary_weights
   has_many :diary_foods
+  has_many :diary_foods
+  has_many :quarry_types
 
   def id
     object.id.to_s

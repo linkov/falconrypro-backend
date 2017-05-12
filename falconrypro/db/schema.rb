@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170505095409) do
+ActiveRecord::Schema.define(version: 20170512084311) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -100,6 +100,11 @@ ActiveRecord::Schema.define(version: 20170505095409) do
 
   add_index "diary_items", ["bird_id"], name: "index_diary_items_on_bird_id", using: :btree
   add_index "diary_items", ["season_id"], name: "index_diary_items_on_season_id", using: :btree
+
+  create_table "diary_items_quarry_types", id: false, force: :cascade do |t|
+    t.integer "quarry_type_id", limit: 4, null: false
+    t.integer "diary_item_id",  limit: 4, null: false
+  end
 
   create_table "diary_weights", force: :cascade do |t|
     t.integer  "weight",        limit: 4

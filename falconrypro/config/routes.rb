@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resources :birds
       resources :bird_types
       resources :seasons
+      resources :quarry_types
     end
   end
 

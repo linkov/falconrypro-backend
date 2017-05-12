@@ -1,8 +1,12 @@
 class SeasonSerializer < ActiveModel::Serializer
-  attributes :id, :start, :end, :start_date, :end_date
+  attributes :id, :start, :end, :start_date, :end_date, :bird
 
   def start_date
     object.start.strftime("%B %d %Y")
+  end
+
+  def bird
+    object.bird.id.to_s
   end
 
 
