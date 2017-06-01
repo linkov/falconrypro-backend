@@ -11,7 +11,7 @@ ActiveAdmin.register DiaryItem do
     attributes_table do
       row :note
       row :bird
-      row :season
+      row :season_id
     end
 
 
@@ -37,6 +37,19 @@ ActiveAdmin.register DiaryItem do
               column :weight
 
             end
+  end
+
+
+  panel "Pins" do
+
+        table_for diary_item.pin_items do
+          column :pin_item_type
+          column :lat
+          column :long
+          column :note
+
+        end
+
   end
 
 

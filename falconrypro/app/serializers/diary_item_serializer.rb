@@ -4,6 +4,7 @@ class DiaryItemSerializer < ActiveModel::Serializer
   has_many :diary_foods
   has_many :diary_foods
   has_many :quarry_types
+  has_many :pin_items
 
   def id
     object.id.to_s

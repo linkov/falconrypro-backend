@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512084311) do
+ActiveRecord::Schema.define(version: 20170601003039) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -137,6 +137,26 @@ ActiveRecord::Schema.define(version: 20170512084311) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "pin_item_types", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "pin_items", force: :cascade do |t|
+    t.decimal  "lat",                            precision: 10, scale: 6
+    t.decimal  "long",                           precision: 10, scale: 6
+    t.integer  "diary_item_id",    limit: 4
+    t.integer  "pin_item_type_id", limit: 4
+    t.text     "note",             limit: 65535
+    t.string   "photo",            limit: 255
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
+  end
+
+  add_index "pin_items", ["diary_item_id"], name: "index_pin_items_on_diary_item_id", using: :btree
+  add_index "pin_items", ["pin_item_type_id"], name: "index_pin_items_on_pin_item_type_id", using: :btree
+
   create_table "quarry_groups", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
@@ -201,6 +221,8 @@ ActiveRecord::Schema.define(version: 20170512084311) do
   add_foreign_key "diary_items", "seasons"
   add_foreign_key "diary_weights", "diary_items"
   add_foreign_key "foods", "food_groups"
+  add_foreign_key "pin_items", "diary_items"
+  add_foreign_key "pin_items", "pin_item_types"
   add_foreign_key "quarry_types", "quarry_groups"
   add_foreign_key "seasons", "birds"
 end
