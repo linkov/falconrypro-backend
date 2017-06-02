@@ -8,6 +8,7 @@ class Api::V1::DiaryItemsController < Api::ApiController
   def create
     Rails.logger.info "CREATE"
     Rails.logger.info diary_item_params
+    Rails.logger.info diary_item_params[:diary_item]
     Rails.logger.info params
     bird = Bird.where(:id => diary_item_params[:diary_item][:bird_id]).first
     diary_item = bird.diary_items.create(diary_item_params[:diary_item])

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       resources :diary_items
       resources :birds
       resources :bird_types
+      resources :pin_item_types
       resources :seasons
       resources :quarry_types
     end
