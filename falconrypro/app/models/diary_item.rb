@@ -11,4 +11,5 @@ class DiaryItem < ActiveRecord::Base
   accepts_nested_attributes_for :pin_items, allow_destroy: true
   accepts_nested_attributes_for :diary_foods, allow_destroy: true
   accepts_nested_attributes_for :diary_weights, allow_destroy: true
+
 end

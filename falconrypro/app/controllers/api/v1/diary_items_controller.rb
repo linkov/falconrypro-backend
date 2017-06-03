@@ -16,8 +16,39 @@ class Api::V1::DiaryItemsController < Api::ApiController
   end
 
   def update
+
+    if diary_item_params[:diary_item]["diary_weights_attributes"] == nil
+      diary_item_params[:diary_item]["diary_weights_attributes"] = []
+    end
+
+    if diary_item_params[:diary_item]["pin_items_attributes"] == nil
+      diary_item_params[:diary_item]["pin_items_attributes"] = []
+    end
+
+
+    if diary_item_params[:diary_item]["diary_foods_attributes"] == nil
+      diary_item_params[:diary_item]["diary_foods_attributes"] = []
+    end
+
+
     item = DiaryItem.find(params[:id])
     item.update(diary_item_params[:diary_item])
+
+
+    if diary_item_params[:diary_item]["diary_weights_attributes"] == []
+      item.diary_weights.destroy_all
+    end
+
+    if diary_item_params[:diary_item]["pin_items_attributes"] == []
+      item.pin_items.destroy_all
+    end
+
+
+    if diary_item_params[:diary_item]["diary_foods_attributes"] == []
+      item.diary_foods.destroy_all
+    end
+
+    item.save!
 
     render :json => item
   end
