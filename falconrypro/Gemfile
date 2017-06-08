@@ -22,7 +22,7 @@ gem 'hightop'
 gem 'active_median'
 gem 'chartkick'
 gem 'best_in_place', github: 'bernat/best_in_place'
-
+gem 'active_admin_datetimepicker'
 
 # API
 gem 'devise_token_auth'

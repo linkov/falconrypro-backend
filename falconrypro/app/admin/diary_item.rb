@@ -1,3 +1,6 @@
+
+
+ActiveAdminDatetimepicker::Base.format = "%Y-%m-%d"
 ActiveAdmin.register DiaryItem do
   permit_params :diary_foods, :season_id, :diary_weights, :bird_id, :note,:pin_items_attributes => [:id, :_destroy,:lat,:long,:photo,:note,:pin_item_type_id],:diary_foods_attributes => [:id, :_destroy,:eaten,:food_id,:time], :diary_weights_attributes => [:id, :_destroy,:weight,:time],:quarry_type_ids => []
   before_filter :skip_sidebar!, :only => :index
@@ -14,6 +17,7 @@ ActiveAdmin.register DiaryItem do
 
 
         f.inputs do
+          f.input :created_date, as: :date_time_picker
           f.input :note
           f.input :bird,:input_html => {
         :onchange => "
