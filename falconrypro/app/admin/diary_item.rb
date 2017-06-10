@@ -8,6 +8,7 @@ ActiveAdmin.register DiaryItem do
 
   index  do
   selectable_column
+  column :created_at
   column :created_date
   column :bird
   column :season
