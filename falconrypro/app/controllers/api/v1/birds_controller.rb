@@ -12,6 +12,22 @@ class Api::V1::BirdsController < Api::ApiController
     bird = Bird.find(params[:id])
     bird.update(bird_params)
 
+
+    if bird_params["dead"] == ""
+      bird.dead = nil
+    end
+
+    if bird_params["deleted"] == ""
+      bird.deleted = nil
+    end
+
+
+    if bird_params["sold"] == ""
+      bird.sold = nil
+    end
+
+
+    bird.save!
     #
     # #   Rails.logger.info "BLA"
     # # # Rails.logger.info params[:bird]
