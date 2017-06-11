@@ -10,6 +10,21 @@ class Api::V1::DiaryItemsController < Api::ApiController
     Rails.logger.info diary_item_params
     Rails.logger.info diary_item_params[:diary_item]
     Rails.logger.info params
+
+
+    if diary_item_params[:diary_item]["diary_weights_attributes"] == nil
+      diary_item_params[:diary_item]["diary_weights_attributes"] = []
+    end
+
+    if diary_item_params[:diary_item]["pin_items_attributes"] == nil
+      diary_item_params[:diary_item]["pin_items_attributes"] = []
+    end
+
+
+    if diary_item_params[:diary_item]["diary_foods_attributes"] == nil
+      diary_item_params[:diary_item]["diary_foods_attributes"] = []
+    end
+
     bird = Bird.where(:id => diary_item_params[:diary_item][:bird_id]).first
     diary_item = bird.diary_items.create(diary_item_params[:diary_item])
     render :json => diary_item
