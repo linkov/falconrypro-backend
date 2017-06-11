@@ -10,6 +10,14 @@ class DiaryItemSerializer < ActiveModel::Serializer
     object.id.to_s
   end
 
+ def created_at
+
+   if object.created_date
+     object.created_date
+   else
+     object.created_at
+   end
+ end
 
   def bird
     object.bird.id.to_s
