@@ -13,7 +13,7 @@ ActiveAdmin.register DiaryItem do
   column :bird
   column :season
   column :note
-
+  actions
   end
 
 
