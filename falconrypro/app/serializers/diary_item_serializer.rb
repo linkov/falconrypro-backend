@@ -23,6 +23,10 @@ class DiaryItemSerializer < ActiveModel::Serializer
     object.bird.id.to_s
   end
 
+  def season
+    object.season.id.to_s
+  end
+
   def created
     object.created_at.strftime("%B%e %Y")
   end
