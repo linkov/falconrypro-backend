@@ -1,5 +1,5 @@
 class DiaryItemSerializer < ActiveModel::Serializer
-  attributes :id, :note, :created_at, :created, :bird
+  attributes :id, :note, :created_at, :created, :bird, :season
   has_many :diary_weights
   has_many :diary_foods
   has_many :diary_foods
