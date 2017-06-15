@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  weight: 1
+  diet_offered: 1
+  diet_eaten: 1
+  food_id: 
+  note: MyText
+
+two:
+  weight: 1
+  diet_offered: 1
+  diet_eaten: 1
+  food_id: 
+  note: MyText

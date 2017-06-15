@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  food_id: 
+  eaten: 1
+  time: 2017-05-05 11:21:36
+  diary_item_id: 
+
+two:
+  food_id: 
+  eaten: 1
+  time: 2017-05-05 11:21:36
+  diary_item_id: 

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bird_type_id: 
+  user_id: 
+  sex: 
+  code: MyString
+  birthday: 2017-04-11
+  fat_weight: 9.99
+  hunting_weight: 9.99
+
+two:
+  bird_type_id: 
+  user_id: 
+  sex: 
+  code: MyString
+  birthday: 2017-04-11
+  fat_weight: 9.99
+  hunting_weight: 9.99
