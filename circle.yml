@@ -10,7 +10,10 @@ machine:
 branches:
   only:
     - master
-
+    
+test:
+  override:
+    - echo "test"
 
 deployment:
   production:
