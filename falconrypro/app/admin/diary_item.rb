@@ -2,7 +2,7 @@
 
 ActiveAdminDatetimepicker::Base.format = "%Y-%m-%d"
 ActiveAdmin.register DiaryItem do
-  permit_params :diary_foods, :created_date, :season_id, :diary_weights, :bird_id, :note,:pin_items_attributes => [:id, :_destroy,:lat,:long,:photo,:note,:pin_item_type_id],:diary_foods_attributes => [:id, :_destroy,:eaten,:food_id,:time], :diary_weights_attributes => [:id, :_destroy,:weight,:time],:quarry_type_ids => []
+  permit_params :diary_foods, :created_date, :season_id, :diary_weights, :bird_id, :note,:diary_photos_attributes => [:id, :_destroy,:lat,:long,:photo,:quarry_type_id,:pin_item_type_id], :pin_items_attributes => [:id, :_destroy,:lat,:long,:photo,:note,:pin_item_type_id],:diary_foods_attributes => [:id, :_destroy,:eaten,:food_id,:time], :diary_weights_attributes => [:id, :_destroy,:weight,:time],:quarry_type_ids => []
   before_filter :skip_sidebar!, :only => :index
   menu parent: 'User generated'
 
@@ -71,6 +71,25 @@ ActiveAdmin.register DiaryItem do
             diary_weight.input :time
             diary_weight.input :weight
             diary_weight.input :_destroy, :as => :boolean, :label => "remove"
+
+            end
+
+        end
+      end
+
+
+      tab 'Photos' do
+
+        f.inputs "Photos" do
+
+          f.has_many :diary_photos do |diary_photo|
+            diary_photo.input :long
+            diary_photo.input :lat
+            diary_photo.input :quarry_type
+            diary_photo.input :pin_item_type
+            diary_photo.input :photo, :as => :file, :label => 'Preview image', :hint => image_tag(diary_photo.object.photo.url(:thumb))
+
+            diary_photo.input :_destroy, :as => :boolean, :label => "remove"
 
             end
 
