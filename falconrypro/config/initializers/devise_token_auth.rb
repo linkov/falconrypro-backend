@@ -13,6 +13,7 @@ DeviseTokenAuth.setup do |config|
   # After this limit is reached, the oldest tokens will be removed.
   # config.max_number_of_devices = 10
   config.change_headers_on_each_request = false
+  config.token_lifespan = 40.weeks
   # Sometimes it's necessary to make several requests to the API at the same
   # time. In this case, each request in the batch will need to share the same
   # auth token. This setting determines how far apart the requests can be while
