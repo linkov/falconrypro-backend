@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       resources :pin_item_types
       resources :seasons
       resources :quarry_types
+      resources :diary_photos
     end
   end
 

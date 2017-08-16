@@ -17,6 +17,7 @@
 
 body {
   background: black;
+  background: url("https://s3.eu-central-1.amazonaws.com/falconryproupload/landing/bgg.jpg")
 }
 
  .landing-container {
