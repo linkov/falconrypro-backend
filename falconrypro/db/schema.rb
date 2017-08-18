@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170817152814) do
+ActiveRecord::Schema.define(version: 20170817195747) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -120,6 +120,8 @@ ActiveRecord::Schema.define(version: 20170817152814) do
     t.datetime "created_at",                                            null: false
     t.datetime "updated_at",                                            null: false
     t.integer  "bird_id",          limit: 4
+    t.float    "width",            limit: 24
+    t.float    "height",           limit: 24
   end
 
   add_index "diary_photos", ["bird_id"], name: "index_diary_photos_on_bird_id", using: :btree
