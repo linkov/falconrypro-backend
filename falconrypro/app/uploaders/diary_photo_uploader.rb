@@ -12,6 +12,7 @@ class DiaryPhotoUploader < CarrierWave::Uploader::Base
   end
 
   process :resize_to_limit => [1200, 1200]
+  process :store_dimensions
 
 
   version :thumb do
@@ -21,6 +22,12 @@ class DiaryPhotoUploader < CarrierWave::Uploader::Base
 
 version :small_thumb, from_version: :thumb do
   process resize_to_fit: [120, 120]
+end
+
+def store_dimensions
+    if file && model
+      model.width, model.height = ::MiniMagick::Image.open(file.file)[:dimensions]
+    end
 end
 
 
